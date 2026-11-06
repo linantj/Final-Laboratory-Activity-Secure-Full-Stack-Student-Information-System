@@ -1,0 +1,48 @@
+services:
+  - type: web
+    name: student-information-api
+    runtime: docker
+    plan: starter
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /up
+    autoDeploy: false
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        sync: false
+      - key: APP_URL
+        sync: false
+      - key: PORT
+        value: "10000"
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_DATABASE
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_SSLMODE
+        value: require
+      - key: FRONTEND_URL
+        sync: false
+      - key: STUDENTS_TABLE
+        value: students
+      - key: SANCTUM_EXPIRATION
+        value: "480"
+      - key: SESSION_DRIVER
+        value: file
+      - key: CACHE_STORE
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: BCRYPT_ROUNDS
+        value: "12"
